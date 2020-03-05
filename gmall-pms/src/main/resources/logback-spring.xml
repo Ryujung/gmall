@@ -24,9 +24,11 @@
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
     <!--常用日志级别debug, info, warn, error-->
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="LOGSTASH"/>
     </root>
+
+    <logger level="debug" name="com.atguigu.gmall"/>
 </configuration>
