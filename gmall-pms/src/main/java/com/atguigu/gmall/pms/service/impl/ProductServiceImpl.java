@@ -174,12 +174,13 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
                 List<EsProductAttributeValue> esProductAttributeValues = new ArrayList<>();
                 esProductAttributeValues.forEach(esProductAttributeValue -> {
+                    //遍历的对象是一个具体的属性,例如颜色或尺码等
                     EsProductAttributeValue value = new EsProductAttributeValue();
                     value.setId(esProductAttributeValue.getId());
                     value.setName(esProductAttributeValue.getName());
                     value.setProductAttributeId(esProductAttributeValue.getProductAttributeId());
                     value.setType(esProductAttributeValue.getType());
-
+                    value.setValue();
 
                     esProductAttributeValues.add(esProductAttributeValue);
                 });
