@@ -32,13 +32,12 @@ public class BrandServiceImpl extends ServiceImpl<BrandMapper, Brand> implements
     @Override
     public PageInfoVo brandPageInfo(String keyword, Integer pageNum, Integer pageSize) {
         //like方法自动拼% ,不需要自己手动拼
-        QueryWrapper<Brand> queryWrapper;
-        if (!StringUtils.isEmpty(keyword))
-            queryWrapper = new QueryWrapper<Brand>().like("name", keyword);
-        else
-            queryWrapper = new QueryWrapper<Brand>();
+        QueryWrapper<Brand> queryWrapper= new QueryWrapper<>();
+        if (!StringUtils.isEmpty(keyword)) {
+            queryWrapper.like("name", keyword);
+        }
 
-        IPage<Brand> page = brandMapper.selectPage(new Page<Brand>(pageNum.longValue(), pageSize.longValue()), queryWrapper);
+        IPage<Brand> page = brandMapper.selectPage(new Page<>(pageNum.longValue(), pageSize.longValue()), queryWrapper);
 
         return new PageInfoVo(page.getTotal(), page.getPages(), page.getSize(), page.getRecords(), page.getCurrent());
     }

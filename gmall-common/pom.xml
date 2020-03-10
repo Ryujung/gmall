@@ -13,6 +13,13 @@
     <artifactId>gmall-common</artifactId>
 
     <dependencies>
+        <!--使用spring开发工具的热部署-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>-->
+
         <!--防止lombok报错-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -45,7 +52,7 @@
             <version>0.2.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+        <!--导入第三方的数据校验组件-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -53,7 +60,6 @@
         </dependency>
 
         <!--引入logback整合logstash的第三方jar包-->
-        <!-- https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder -->
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>

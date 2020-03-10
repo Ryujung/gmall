@@ -4,6 +4,8 @@ import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 1.整合dubbo
@@ -14,6 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *  ②导入日志配置
  *  ③在Kibana中创建相应日志的索引,就可以可视化检索了
  */
+@EnableAspectJAutoProxy(exposeProxy = true)
+@EnableTransactionManagement
 @EnableDubbo
 @MapperScan(basePackages = "com.atguigu.gmall.pms.mapper")
 @SpringBootApplication

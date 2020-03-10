@@ -30,6 +30,4 @@ public class PmsProductParam extends Product implements Serializable {
     private List<SubjectProductRelation> subjectProductRelationList;
     @ApiModelProperty("优选专区和商品的关系")
     private List<PrefrenceAreaProductRelation> prefrenceAreaProductRelationList;
-
-
 }

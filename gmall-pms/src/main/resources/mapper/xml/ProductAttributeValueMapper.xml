@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.gmall.pms.mapper.ProductAttributeValueMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.atguigu.gmall.pms.entity.ProductAttributeValue">
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="product_attribute_id" property="productAttributeId"/>
+        <result column="value" property="value"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, product_id, product_attribute_id, value
+    </sql>
+    <!--List<EsProductAttributeValue> selectProductBasicAttrAndValue(Long id);-->
+    <select id="selectProductBasicAttrAndValue" resultType="com.atguigu.gmall.to.es.EsProductAttributeValue">
+        SELECT pav.*,
+               pa.`name`,
+               pa.`type`
+        FROM `pms_product_attribute_value` pav
+                 LEFT JOIN `pms_product_attribute` pa
+                           ON pav.product_attribute_id = pa.`id`
+        WHERE product_id = #{id}
+          AND pa.`type` = 1;
+    </select>
+
+    <!--找到商品的所有销售属性-->
+    <select id="selectProductSaleAttrName" resultType="com.atguigu.gmall.pms.entity.ProductAttribute">
+        select *
+        from pms_product_attribute pa
+        where pa.pms_product_attribute_category_id =
+              (
+                  select pa.product_attribute_category_id
+                  from pms_product_attribute_value pav
+                           left join pms_product_attribute pa
+                                     on pa.id = pav.product_attribute_id
+                  where pav.product_id = #{id}
+                    and pa.type = 0
+                  limit 1
+              )
+          and pa.type = 0
+        order by pa.sort desc
+    </select>
+
+</mapper>

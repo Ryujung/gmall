@@ -1,6 +1,7 @@
 package com.atguigu.gmall.pms.service;
 
 import com.atguigu.gmall.pms.entity.ProductAttributeCategory;
+import com.atguigu.gmall.vo.product.PageInfoVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -12,5 +13,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2020-02-19
  */
 public interface ProductAttributeCategoryService extends IService<ProductAttributeCategory> {
-
+    /**
+     * 分页查询所有的属性分类
+     *
+     * @param pageSize
+     * @param pageNum
+     * @return
+     */
+    PageInfoVo productAttributeCategoryPageInfo(Integer pageSize, Integer pageNum);
 }

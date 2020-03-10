@@ -19,6 +19,18 @@
     </properties>
 
     <dependencies>
+        <!--使用spring开发工具的热部署-->
+       <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>-->
+        <!-- 阿里云OSS -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>2.5.0</version>
+        </dependency>
         <dependency>
             <groupId>com.atguigu.gmall</groupId>
             <artifactId>gmall-api</artifactId>

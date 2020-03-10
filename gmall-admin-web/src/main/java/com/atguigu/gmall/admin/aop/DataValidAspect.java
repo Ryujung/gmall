@@ -32,7 +32,7 @@ public class DataValidAspect {
     @Around("execution(* com.atguigu.gmall.admin..*Controller.*(..))")
     public Object validAround(ProceedingJoinPoint joinPoint) {
         Object proceed;
-        log.debug("校验切面进行校验工作....");
+        log.debug("校验切面进行校验工作...."+ joinPoint);
         try {
             //前置
             Object[] args = joinPoint.getArgs();
